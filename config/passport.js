@@ -10,7 +10,7 @@ passport.use(
     async (identifier, password, done) => {
       try {
         // Find user by username or email
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findFirst({
           where: {
             OR: [{ username: identifier }, { email: identifier }],
           },

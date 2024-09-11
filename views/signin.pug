@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+    h1=title 
+    if messages && messages.length > 0
+        ul 
+            for message in messages 
+                li=message
+
+    form(method="POST")
+        label(for="name") Username or Email:
+        br
+        input(type="text" id="name" placeholder="username or email" name="identifier" value=(formData === undefined ? '' : formData.identifier))
+        br
+        br
+        label(for="password") Password:  
+        br
+        input(type="password" placeholder="password" name="password" id="password" value=(formData === udefined ? '' : formData.password))
+        br
+        button Log In
+        p Don't have an account yet. Click 
+            a(href="/signup") here.
