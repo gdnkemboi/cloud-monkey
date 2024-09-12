@@ -12,6 +12,7 @@ const flash = require("connect-flash");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const folderRouter = require("./routes/folder")
 
 const app = express();
 const prisma = new PrismaClient();
@@ -49,6 +50,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/", usersRouter);
+app.use("/folder", folderRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
