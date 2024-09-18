@@ -4,7 +4,29 @@ block content
   h1= title
   if user 
     p Welcome #{user.username}
+    a(href="/folder/all") All Folders
+    br
     a(href="/logout") Log Out
+
+    button#addFolderBtn + Add folder
+
+    if errors && errors.length > 0
+      ul
+        each error in errors
+         li=error
+
   else 
     p Welcome
     a(href="/signin") Sign In
+
+
+
+  // Modal
+  #folderModal.modal(style="display: none;")
+    .modal-content
+      span.close &times;
+      h2 Enter Folder Name
+      form(action="/folder/new" method="POST")
+        input(type="text" name="folderName" placeholder="Folder Name", required)
+        button(type="submit") Create Folder
+

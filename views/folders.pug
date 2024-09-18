@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1=title
+  
+  ol
+    each folder in folders
+      li
+        a(href=`/folder/${folder.id}`)=folder.name
