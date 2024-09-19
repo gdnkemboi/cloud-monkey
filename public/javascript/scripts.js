@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const createFolderModal = document.getElementById("folderModal");
+  const createChildFolderModal = document.getElementById(
+    "createChildFolderModal",
+  );
   const editFolderModal = document.getElementById("editFolderModal");
   const deleteFolderModal = document.getElementById("deleteFolderModal");
   const createFolderBtn = document.getElementById("addFolderBtn");
+  const createChildFolderBtn = document.getElementById("createChildFolderBtn");
   const editFolderBtn = document.getElementById("editFolderBtn");
   const deleteFolderBtn = document.getElementById("deleteFolderBtn");
 
@@ -10,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (event) => {
     if (event.target === createFolderBtn) {
       createFolderModal.style.display = "block";
+    } else if (event.target === createChildFolderBtn) {
+      createChildFolderModal.style.display = "block";
     } else if (event.target === editFolderBtn) {
       editFolderModal.style.display = "block";
     } else if (event.target === deleteFolderBtn) {
@@ -38,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("click", (event) => {
     if (event.target == createFolderModal) {
       createFolderModal.style.display = "none";
+    } else if (event.target == createChildFolderModal) {
+      createChildFolderModal.style.display = "none";
     } else if (event.target == editFolderModal) {
       editFolderModal.style.display = "none";
     } else if (event.target == deleteFolderModal) {

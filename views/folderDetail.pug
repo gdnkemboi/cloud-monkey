@@ -4,16 +4,41 @@ block content
   .header
     h1=title
     .folderBtns
+      button(id="createChildFolderBtn") Create Subfolder
       button(id="editFolderBtn") Edit  
       button(id="deleteFolderBtn") Delete
+
+  // List child folders
+  
+  if folder.childFolders.length > 0
+    div Folders
+      ol
+        each childFolder in folder.childFolders
+          li
+            a(href=`/folder/${childFolder.id}`)=childFolder.name
+  else
+     div No subfolders
+
+  // List files in folder
+  
   if folder.files.length > 0
-    ul
-      each file in folder.files
-        li=file.name  
+    div Files
+      ul
+        each file in folder.files
+          li=file.name  
   else
     div No files 
 
-  // Modal
+  // Create child folder modal  
+  #createChildFolderModal.modal(style="display: none;")
+    .modal-content
+      span.close &times;
+      h2 Enter folder name
+      form(action=`/folder/${folder.id}/new`, method="POST")
+        input(type="text" name="folderName" placeholder="Folder Name", required)
+        button(type="submit") Create Folder
+
+  // Edit folder modal
   #editFolderModal.modal(style="display: none;")
     .modal-content  
       span.close &times;
@@ -22,7 +47,7 @@ block content
         input(type="text" name="folderName" value=folder.name placeholder="Folder Name", required)
         button(type="submit") Edit Folder  
 
-  // Modal
+  // Delete folder modal
   #deleteFolderModal.modal(style="display: none;")
     .modal-content
       span.close &times;

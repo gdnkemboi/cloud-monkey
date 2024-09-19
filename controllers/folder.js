@@ -29,6 +29,32 @@ exports.createFolder = [
   }),
 ];
 
+exports.createChildFolder = [
+  body("folderName")
+    .notEmpty()
+    .withMessage("Folder name is required.")
+    .trim()
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("folderDetail", {
+        errors: errors.array(),
+      });
+    }
+
+    await prisma.folder.create({
+      data: {
+        name: req.body.folderName,
+        userId: req.user.id,
+        parentFolderId: req.params.folderID,
+      },
+    });
+
+    res.redirect(`/folder/${req.params.folderID}`);
+  }),
+];
+
 exports.getAllFolders = asyncHandler(async (req, res, next) => {
   const folders = await prisma.folder.findMany({
     where: {
@@ -40,13 +66,12 @@ exports.getAllFolders = asyncHandler(async (req, res, next) => {
 });
 
 exports.getFolderDetail = asyncHandler(async (req, res, next) => {
-  console.log(req.params);
-
   const folder = await prisma.folder.findFirst({
     where: {
       id: req.params.folderID,
     },
     include: {
+      childFolders: true,
       files: true,
     },
   });

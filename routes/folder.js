@@ -4,6 +4,8 @@ const folderControllers = require("../controllers/folder");
 
 router.post("/new", folderControllers.createFolder);
 
+router.post("/:folderID/new", folderControllers.createChildFolder);
+
 router.get("/all", folderControllers.getAllFolders);
 
 router.get("/:folderID", folderControllers.getFolderDetail);

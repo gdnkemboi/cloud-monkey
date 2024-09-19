@@ -13,13 +13,16 @@ a {
 
 .header {
   display: flex;
+  gap: 20px;
 }
 
 .header .folderBtns {
   display: flex;
+  gap: 5px;
 }
 
 button#addFolderBtn,
+button#createChildFolderBtn,
 button#editFolderBtn,
 button#deleteFolderBtn {
   display: block;
