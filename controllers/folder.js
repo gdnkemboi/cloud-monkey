@@ -59,6 +59,7 @@ exports.getAllFolders = asyncHandler(async (req, res, next) => {
   const folders = await prisma.folder.findMany({
     where: {
       userId: req.user.id,
+      parentFolderId: null,
     },
   });
 
