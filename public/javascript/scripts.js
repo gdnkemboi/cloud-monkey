@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const createChildFolderModal = document.getElementById(
     "createChildFolderModal",
   );
+  const uploadFileModal = document.getElementById("uploadFileModal");
   const editFolderModal = document.getElementById("editFolderModal");
   const deleteFolderModal = document.getElementById("deleteFolderModal");
   const createFolderBtn = document.getElementById("addFolderBtn");
   const createChildFolderBtn = document.getElementById("createChildFolderBtn");
+  const uploadFileBtn = document.getElementById("uploadFileBtn");
   const editFolderBtn = document.getElementById("editFolderBtn");
   const deleteFolderBtn = document.getElementById("deleteFolderBtn");
 
@@ -16,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
       createFolderModal.style.display = "block";
     } else if (event.target === createChildFolderBtn) {
       createChildFolderModal.style.display = "block";
+    } else if (event.target === uploadFileBtn) {
+      uploadFileModal.style.display = "block";
     } else if (event.target === editFolderBtn) {
       editFolderModal.style.display = "block";
     } else if (event.target === deleteFolderBtn) {
@@ -46,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
       createFolderModal.style.display = "none";
     } else if (event.target == createChildFolderModal) {
       createChildFolderModal.style.display = "none";
+    } else if (event.target === uploadFileModal) {
+      uploadFileModal.style.display = "none";
     } else if (event.target == editFolderModal) {
       editFolderModal.style.display = "none";
     } else if (event.target == deleteFolderModal) {

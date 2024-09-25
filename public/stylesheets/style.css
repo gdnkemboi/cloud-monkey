@@ -23,6 +23,7 @@ a {
 
 button#addFolderBtn,
 button#createChildFolderBtn,
+button#uploadFileBtn,
 button#editFolderBtn,
 button#deleteFolderBtn {
   display: block;
@@ -33,6 +34,11 @@ button#deleteFolderBtn {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+button#uploadFileBtn {
+  background-color: yellow;
+  color: black;
 }
 
 button#editFolderBtn {

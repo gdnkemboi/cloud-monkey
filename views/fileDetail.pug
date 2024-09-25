@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  // File details section
+  .file-details
+    p File name: #{file.filename}
+    p File size: #{(file.size / 1024).toFixed(2)} KB
+    p Created on: #{file.createdAt.toDateString()} 
+
+  // Edit file name form
+  form(action=`/file/${file.id}/edit`, method="POST")
+    label(for="fileName") Edit File Name:
+    input(type="text" name="fileName" value=file.filename placeholder="File Name" required)
+    button(type="submit") Save Changes
+
+  // Download and Delete buttons
+  a.button(href=`/file/${file.id}/download`) Download
+  form(action=`/file/${file.id}/delete`, method="POST", onsubmit="return confirm('Are you sure you want to delete this file?');")
+    button(type="submit" class="delete-button") Delete
+
